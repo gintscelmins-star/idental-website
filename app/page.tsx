@@ -1,12 +1,16 @@
-import { ArrowRight, BadgeCheck, MapPin, Phone, Star, ShieldCheck, Clock3, Sparkles, ChevronDown, Heart, Award, Users } from 'lucide-react'
+import {
+  Phone, MapPin, Clock, Star, ChevronDown, ArrowRight,
+  Sparkles, ShieldCheck, BadgeCheck, Smile, Stethoscope,
+  Baby, Zap, Crown, Droplets
+} from 'lucide-react'
 
 const services = [
-  { icon: '🦷', name: 'Zobu implanti', desc: 'Straumann un Osstem implanti — ilgmūžīgs risinājums ar dabīgu izskatu.' },
-  { icon: '✨', name: 'Estētiskā zobārstniecība', desc: 'Venīri, balināšana un elaineri — jūsu sapņu smaids.' },
-  { icon: '🧹', name: 'Zobu higiēna', desc: 'Profesionāla higiēna un profilakse visai ģimenei.' },
-  { icon: '🚨', name: 'Ārkārtas palīdzība', desc: 'Palīdzam akūtu sāpju gadījumos arī bez iepriekšēja pieraksta.' },
-  { icon: '🔩', name: 'Protezēšana', desc: 'Kroņi, tilti un pilna mutes rehabilitācija.' },
-  { icon: '👶', name: 'Bērnu zobārstniecība', desc: 'Maiga, bērnam draudzīga pieeja no pirmā apmeklējuma.' },
+  { icon: Crown, name: 'Zobu implanti', desc: 'Straumann un Osstem implanti — ilgmūžīgs risinājums ar dabīgu izskatu.' },
+  { icon: Sparkles, name: 'Estētiskā zobārstniecība', desc: 'Venīri, balināšana un elaineri — jūsu sapņu smaids.' },
+  { icon: Droplets, name: 'Zobu higiēna', desc: 'Profesionāla higiēna un profilakse visai ģimenei.' },
+  { icon: Zap, name: 'Ārkārtas palīdzība', desc: 'Palīdzam akūtu sāpju gadījumos arī bez iepriekšēja pieraksta.' },
+  { icon: Stethoscope, name: 'Protezēšana', desc: 'Kroņi, tilti un pilna mutes rehabilitācija.' },
+  { icon: Baby, name: 'Bērnu zobārstniecība', desc: 'Maiga, bērnam draudzīga pieeja no pirmā apmeklējuma.' },
 ]
 
 const stats = [
@@ -31,9 +35,9 @@ const team = [
 ]
 
 const reviews = [
-  { name: 'Anna K.', stars: 5, text: 'Lieliski speciālisti! Implants izveidots precīzi, bez sāpēm. Noteikti iesaku!' },
-  { name: 'Jānis M.', stars: 5, text: 'Ātrs pieraksts, draudzīga komanda. Bērni vairs nebaidās pie zobārsta.' },
-  { name: 'Olga S.', stars: 5, text: 'Venīri izskatās fantastiski. Profesionālisms augstākajā līmenī.' },
+  { name: 'Anna K.', text: 'Lieliski speciālisti! Implants izveidots precīzi, bez sāpēm. Noteikti iesaku!' },
+  { name: 'Jānis M.', text: 'Ātrs pieraksts, draudzīga komanda. Bērni vairs nebaidās pie zobārsta.' },
+  { name: 'Olga S.', text: 'Venīri izskatās fantastiski. Profesionālisms augstākajā līmenī.' },
 ]
 
 const faqs = [
@@ -50,7 +54,7 @@ export default function Home() {
     <main className="bg-white text-slate-800" style={{fontFamily: 'DM Sans, sans-serif'}}>
 
       {/* NAVBAR */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-slate-100 shadow-sm">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-slate-100 shadow-sm">
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           <div style={{fontFamily: 'Playfair Display, serif'}} className="text-2xl font-bold text-cyan-700">iDental</div>
           <div className="hidden md:flex gap-8 text-sm text-slate-600 font-medium">
@@ -64,54 +68,55 @@ export default function Home() {
         </div>
       </nav>
 
-      {/* HERO */}
-      <section className="pt-20 min-h-screen flex items-center" style={{background: 'linear-gradient(135deg, #ecfeff 0%, #ffffff 50%, #f0fdfa 100%)'}}>
-        <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center py-20">
-          <div>
-            <div className="inline-flex items-center gap-2 bg-cyan-100 text-cyan-800 text-sm font-semibold px-4 py-2 rounded-full mb-8">
-              <Sparkles size={14} /> Rīgas centrs · Tērbatas iela 78
+      {/* HERO — full screen smile photo + overlay */}
+      <section className="relative min-h-screen flex flex-col justify-end">
+        {/* Background photo */}
+        <div className="absolute inset-0">
+          <img
+            src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=1920&q=90"
+            alt="Smaids"
+            className="w-full h-full object-cover object-center"
+          />
+          {/* Dark gradient overlay — bottom heavy for text readability */}
+          <div className="absolute inset-0" style={{background: 'linear-gradient(to bottom, rgba(8,35,50,0.25) 0%, rgba(8,35,50,0.55) 50%, rgba(6,100,130,0.92) 100%)'}} />
+        </div>
+
+        {/* Hero content */}
+        <div className="relative z-10 max-w-7xl mx-auto px-6 pb-0 w-full">
+          <div className="max-w-2xl pt-32 pb-16">
+            <div className="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm text-white text-sm font-medium px-4 py-2 rounded-full mb-8 border border-white/25">
+              <MapPin size={14} /> Tērbatas iela 78, Rīga
             </div>
-            <h1 style={{fontFamily: 'Playfair Display, serif', lineHeight: '1.15'}} className="text-5xl md:text-6xl font-bold text-slate-900 mb-6">
-              Klientu mīļākā<br /><span className="text-cyan-600">zobārstniecība</span><br />Rīgā.
+            <h1 style={{fontFamily: 'Playfair Display, serif', lineHeight: '1.12'}} className="text-5xl md:text-7xl font-bold text-white mb-6">
+              Jūsu smaids —<br /><span className="text-cyan-300">mūsu ekspertīze.</span>
             </h1>
-            <p className="text-xl text-slate-500 leading-8 mb-8 max-w-lg">
-              22 gadu pieredze, 20+ speciālisti un sirsnīga attieksme pret katru pacientu. Implanti un estētiskā zobārstniecība — mūsu kaislība.
+            <p className="text-xl text-cyan-100 leading-8 mb-10 max-w-lg">
+              Premium zobārstniecība Rīgas centrā. 22 gadu pieredze, 20+ speciālisti, sirsnīga attieksme.
             </p>
-            <div className="flex flex-wrap gap-4 mb-10">
-              <a href="#kontakti" className="inline-flex items-center gap-2 bg-cyan-600 hover:bg-cyan-700 text-white font-semibold px-8 py-4 rounded-full transition-all shadow-lg text-lg">
+            <div className="flex flex-wrap gap-4">
+              <a href="#kontakti" className="inline-flex items-center gap-2 bg-cyan-500 hover:bg-cyan-400 text-white font-semibold px-8 py-4 rounded-full transition-all shadow-xl text-lg">
                 Pierakstīties online <ArrowRight size={20} />
               </a>
-              <a href="https://wa.me/37127778858" className="inline-flex items-center gap-2 border-2 border-cyan-600 text-cyan-700 hover:bg-cyan-50 font-semibold px-8 py-4 rounded-full transition-all text-lg">
-                💬 WhatsApp
+              <a href="https://wa.me/37127778858" className="inline-flex items-center gap-2 bg-white/15 hover:bg-white/25 backdrop-blur-sm border border-white/30 text-white font-semibold px-8 py-4 rounded-full transition-all text-lg">
+                <Phone size={18} /> WhatsApp
               </a>
             </div>
-            <div className="flex flex-wrap gap-6 text-sm text-slate-500">
-              <span className="flex items-center gap-2"><Star size={15} className="text-amber-400" fill="currentColor"/>4.7/5 · 302 atsauksmes</span>
-              <span className="flex items-center gap-2"><Clock3 size={15} className="text-cyan-500"/>Katru dienu 9–20</span>
-              <span className="flex items-center gap-2"><ShieldCheck size={15} className="text-cyan-500"/>LV · RU · EN</span>
-            </div>
           </div>
-          <div className="relative">
-            <div className="absolute -inset-8 rounded-[3rem] opacity-40" style={{background: 'radial-gradient(circle, #a5f3fc, transparent 70%)'}} />
-            <div className="relative rounded-[2.5rem] overflow-hidden shadow-2xl border border-cyan-100">
-              <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=800&q=85" alt="iDental klīnika" className="w-full h-[480px] object-cover" />
-              <div className="absolute bottom-0 left-0 right-0 p-6" style={{background: 'linear-gradient(to top, rgba(8,145,178,0.95), transparent)'}}>
-                <div className="flex gap-6">
-                  {stats.map(s => (
-                    <div key={s.n} className="text-white">
-                      <div style={{fontFamily: 'Playfair Display, serif'}} className="text-2xl font-bold">{s.n}</div>
-                      <div className="text-cyan-200 text-xs">{s.label}</div>
-                    </div>
-                  ))}
-                </div>
+
+          {/* Stats bar */}
+          <div className="border-t border-white/20 py-6 grid grid-cols-2 md:grid-cols-4 gap-6">
+            {stats.map(s => (
+              <div key={s.n} className="text-white">
+                <div style={{fontFamily: 'Playfair Display, serif'}} className="text-3xl font-bold">{s.n}</div>
+                <div className="text-cyan-200 text-sm mt-1">{s.label}</div>
               </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* PAKALPOJUMI */}
-      <section id="pakalpojumi" className="py-24" style={{background: '#f8fffe'}}>
+      <section id="pakalpojumi" className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
             <div className="text-cyan-600 font-semibold text-sm uppercase tracking-widest mb-3">Ko mēs darām</div>
@@ -119,19 +124,24 @@ export default function Home() {
             <p className="mt-4 text-slate-500 text-lg max-w-xl mx-auto">No implantiem līdz estētikai — viss vienā vietā.</p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {services.map((s) => (
-              <div key={s.name} className="bg-white border border-slate-100 rounded-3xl p-8 shadow-sm hover:shadow-lg hover:border-cyan-200 hover:-translate-y-1 transition-all duration-300 group">
-                <div className="text-5xl mb-5">{s.icon}</div>
-                <h3 style={{fontFamily: 'Playfair Display, serif'}} className="text-xl font-bold text-slate-900 mb-3 group-hover:text-cyan-700 transition-colors">{s.name}</h3>
-                <p className="text-slate-500 leading-7">{s.desc}</p>
-              </div>
-            ))}
+            {services.map((s) => {
+              const Icon = s.icon
+              return (
+                <div key={s.name} className="bg-slate-50 border border-slate-100 rounded-3xl p-8 hover:shadow-lg hover:border-cyan-200 hover:-translate-y-1 transition-all duration-300 group">
+                  <div className="w-14 h-14 rounded-2xl bg-cyan-100 flex items-center justify-center mb-6 group-hover:bg-cyan-600 transition-colors">
+                    <Icon size={26} className="text-cyan-600 group-hover:text-white transition-colors" />
+                  </div>
+                  <h3 style={{fontFamily: 'Playfair Display, serif'}} className="text-xl font-bold text-slate-900 mb-3">{s.name}</h3>
+                  <p className="text-slate-500 leading-7">{s.desc}</p>
+                </div>
+              )
+            })}
           </div>
         </div>
       </section>
 
       {/* CENAS */}
-      <section id="cenas" className="py-24 bg-white">
+      <section id="cenas" className="py-24" style={{background: '#f0fdfc'}}>
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
             <div className="text-cyan-600 font-semibold text-sm uppercase tracking-widest mb-3">Caurspīdīgums</div>
@@ -140,24 +150,31 @@ export default function Home() {
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             {[
-              { title: '🦷 Zobu implanti', color: 'from-cyan-600 to-cyan-500', items: ['Straumann — no 800 €','Osstem — no 750 €','Implanta vainags — individuāli','Konsultācija — pēc pieraksta'] },
-              { title: '✨ Estētika', color: 'from-teal-600 to-cyan-500', items: ['Balināšana — no 180 €','Venīri (1 zobs) — no 750 €','Elaineri — individuāli','Kompozīts — no 80 €'] },
-              { title: '🧹 Higiēna', color: 'from-sky-600 to-cyan-500', items: ['Higiēna — no 95 €','Starpzobu apstrāde — iekļauta','Rentgens — no 15 €','Konsultācija — no 30 €'] },
-            ].map((p) => (
-              <div key={p.title} className="rounded-3xl overflow-hidden shadow-md hover:shadow-xl transition-all">
-                <div className={`bg-gradient-to-r ${p.color} text-white p-6`}>
-                  <h3 style={{fontFamily: 'Playfair Display, serif'}} className="text-xl font-bold">{p.title}</h3>
+              { title: 'Zobu implanti', icon: Crown, items: ['Straumann — no 800 €','Osstem — no 750 €','Implanta vainags — individuāli','Konsultācija — pēc pieraksta'] },
+              { title: 'Estētika', icon: Sparkles, featured: true, items: ['Balināšana — no 180 €','Venīri (1 zobs) — no 750 €','Elaineri — individuāli','Kompozīts — no 80 €'] },
+              { title: 'Higiēna', icon: Droplets, items: ['Higiēna — no 95 €','Starpzobu apstrāde — iekļauta','Rentgens — no 15 €','Konsultācija — no 30 €'] },
+            ].map((p) => {
+              const Icon = p.icon
+              return (
+                <div key={p.title} className={`rounded-3xl overflow-hidden shadow-sm border transition-all hover:shadow-xl ${ p.featured ? 'border-cyan-400 ring-2 ring-cyan-400' : 'border-slate-200'}`}>
+                  <div className={`p-6 flex items-center gap-4 ${ p.featured ? 'bg-cyan-600' : 'bg-white'}`}>
+                    <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${p.featured ? 'bg-white/20' : 'bg-cyan-100'}`}>
+                      <Icon size={22} className={p.featured ? 'text-white' : 'text-cyan-600'} />
+                    </div>
+                    <h3 style={{fontFamily: 'Playfair Display, serif'}} className={`text-xl font-bold ${p.featured ? 'text-white' : 'text-slate-900'}`}>{p.title}</h3>
+                    {p.featured && <span className="ml-auto text-xs bg-white/20 text-white px-3 py-1 rounded-full">Populārs</span>}
+                  </div>
+                  <div className="bg-white p-6">
+                    <ul className="space-y-3">
+                      {p.items.map(i => <li key={i} className="flex items-start gap-3 text-slate-600"><BadgeCheck size={16} className="text-cyan-500 flex-shrink-0 mt-0.5" />{i}</li>)}
+                    </ul>
+                    <a href="#kontakti" className="mt-6 block text-center bg-cyan-50 hover:bg-cyan-100 border border-cyan-200 text-cyan-700 font-semibold py-3 rounded-2xl transition-all text-sm">
+                      Pierakstīties →
+                    </a>
+                  </div>
                 </div>
-                <div className="bg-white p-6 border border-t-0 border-slate-100 rounded-b-3xl">
-                  <ul className="space-y-3">
-                    {p.items.map(i => <li key={i} className="flex items-start gap-3 text-slate-600"><span className="text-cyan-500 font-bold mt-0.5">✓</span>{i}</li>)}
-                  </ul>
-                  <a href="#kontakti" className="mt-6 block text-center bg-slate-50 hover:bg-cyan-50 border border-slate-200 hover:border-cyan-300 text-slate-700 font-semibold py-3 rounded-2xl transition-all text-sm">
-                    Pierakstīties →
-                  </a>
-                </div>
-              </div>
-            ))}
+              )
+            })}
           </div>
           <p className="text-center mt-8 text-slate-400 text-sm">* Cenas ir indikatīvas. Precīzu piedāvājumu sagatavosim pēc konsultācijas.</p>
         </div>
@@ -171,7 +188,7 @@ export default function Home() {
             <h2 style={{fontFamily: 'Playfair Display, serif'}} className="text-4xl md:text-5xl font-bold text-white">Kā tas notiek?</h2>
           </div>
           <div className="grid md:grid-cols-4 gap-6">
-            {steps.map((s, i) => (
+            {steps.map((s) => (
               <div key={s.n} className="text-center">
                 <div className="w-16 h-16 rounded-full bg-white/20 text-white font-bold text-xl flex items-center justify-center mx-auto mb-5 border-2 border-white/30" style={{fontFamily: 'Playfair Display, serif'}}>{s.n}</div>
                 <h3 className="font-bold text-white text-lg mb-2">{s.title}</h3>
@@ -207,19 +224,26 @@ export default function Home() {
       </section>
 
       {/* ATSAUKSMES */}
-      <section id="atsauksmes" className="py-24" style={{background: '#f8fffe'}}>
+      <section id="atsauksmes" className="py-24" style={{background: '#f0fdfc'}}>
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
             <div className="text-cyan-600 font-semibold text-sm uppercase tracking-widest mb-3">Pacientu viedoklis</div>
             <h2 style={{fontFamily: 'Playfair Display, serif'}} className="text-4xl md:text-5xl font-bold text-slate-900">Ko saka mūsu pacienti</h2>
-            <p className="mt-4 text-slate-500">⭐ 4.7/5 — 302 Google atsauksmes</p>
+            <div className="mt-4 flex items-center justify-center gap-2">
+              {[...Array(5)].map((_,i) => <Star key={i} size={20} className="text-amber-400" fill="currentColor" />)}
+              <span className="text-slate-500 ml-2">4.7 · 302 Google atsauksmes</span>
+            </div>
           </div>
           <div className="grid md:grid-cols-3 gap-6">
             {reviews.map((r) => (
               <div key={r.name} className="bg-white border border-slate-100 rounded-3xl p-8 shadow-sm hover:shadow-md transition-all">
-                <div className="flex gap-1 mb-4">{Array(r.stars).fill(0).map((_,i)=><Star key={i} size={18} className="text-amber-400" fill="currentColor"/>)}</div>
-                <p className="text-slate-600 leading-7 italic text-lg">&ldquo;{r.text}&rdquo;</p>
-                <div style={{fontFamily: 'Playfair Display, serif'}} className="mt-5 font-bold text-slate-900">{r.name}</div>
+                <div className="flex gap-1 mb-5">
+                  {[...Array(5)].map((_,i) => <Star key={i} size={16} className="text-amber-400" fill="currentColor" />)}
+                </div>
+                <p className="text-slate-600 leading-8 text-lg">&ldquo;{r.text}&rdquo;</p>
+                <div style={{fontFamily: 'Playfair Display, serif'}} className="mt-6 font-bold text-slate-900 flex items-center gap-2">
+                  <ShieldCheck size={16} className="text-cyan-500" /> {r.name} · Google
+                </div>
               </div>
             ))}
           </div>
@@ -237,7 +261,7 @@ export default function Home() {
             {faqs.map(([q,a]) => (
               <details key={q} className="group bg-slate-50 hover:bg-cyan-50 border border-slate-200 hover:border-cyan-200 rounded-2xl p-6 transition-all cursor-pointer">
                 <summary className="font-semibold text-slate-900 flex justify-between items-center list-none text-lg">
-                  {q} <ChevronDown size={20} className="text-cyan-500 group-open:rotate-180 transition-transform flex-shrink-0"/>
+                  {q} <ChevronDown size={20} className="text-cyan-500 group-open:rotate-180 transition-transform flex-shrink-0" />
                 </summary>
                 <p className="mt-4 text-slate-600 leading-7">{a}</p>
               </details>
@@ -254,21 +278,21 @@ export default function Home() {
             <h2 style={{fontFamily: 'Playfair Display, serif'}} className="text-4xl md:text-5xl font-bold mb-6">Pierakstieties šodien</h2>
             <p className="text-cyan-100 text-lg mb-10">Mēs atbildēsim pēc iespējas ātrāk. Konsultācija — bez maksas.</p>
             <div className="space-y-5">
-              <div className="flex items-center gap-4 text-white">
-                <div className="w-12 h-12 rounded-2xl bg-white/20 flex items-center justify-center flex-shrink-0"><MapPin size={20}/></div>
-                <div><div className="font-semibold">Adrese</div><div className="text-cyan-100">Tērbatas iela 78, Rīga, LV-1001</div></div>
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-2xl bg-white/20 flex items-center justify-center flex-shrink-0"><MapPin size={20} className="text-white" /></div>
+                <div><div className="font-semibold text-white">Adrese</div><div className="text-cyan-100">Tērbatas iela 78, Rīga, LV-1001</div></div>
               </div>
-              <div className="flex items-center gap-4 text-white">
-                <div className="w-12 h-12 rounded-2xl bg-white/20 flex items-center justify-center flex-shrink-0"><Phone size={20}/></div>
-                <div><div className="font-semibold">Tālrunis</div><div className="text-cyan-100">+371 63 030 347</div></div>
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-2xl bg-white/20 flex items-center justify-center flex-shrink-0"><Phone size={20} className="text-white" /></div>
+                <div><div className="font-semibold text-white">Tālrunis</div><div className="text-cyan-100">+371 63 030 347</div></div>
               </div>
-              <div className="flex items-center gap-4 text-white">
-                <div className="w-12 h-12 rounded-2xl bg-white/20 flex items-center justify-center flex-shrink-0"><Clock3 size={20}/></div>
-                <div><div className="font-semibold">Darba laiks</div><div className="text-cyan-100">Katru dienu 9:00–20:00</div></div>
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-2xl bg-white/20 flex items-center justify-center flex-shrink-0"><Clock size={20} className="text-white" /></div>
+                <div><div className="font-semibold text-white">Darba laiks</div><div className="text-cyan-100">Katru dienu 9:00–20:00</div></div>
               </div>
             </div>
             <div className="mt-10 rounded-2xl overflow-hidden border-2 border-white/20">
-              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2176.0!2d24.1343265!3d56.9591135!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46eece3529e15205%3A0xbc7eb07a0c37b6b5!2siDental!5e0!3m2!1slv!2slv!4v1" width="100%" height="220" style={{border:0}} loading="lazy"/>
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2176.0!2d24.1343265!3d56.9591135!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46eece3529e15205%3A0xbc7eb07a0c37b6b5!2siDental!5e0!3m2!1slv!2slv!4v1" width="100%" height="220" style={{border:0}} loading="lazy" />
             </div>
           </div>
           <form className="bg-white rounded-3xl p-8 shadow-2xl">
@@ -288,7 +312,7 @@ export default function Home() {
               <option>Bērnu zobārstniecība</option>
               <option>Cits jautājums</option>
             </select>
-            <textarea className="mt-4 rounded-xl border border-slate-200 p-4 w-full focus:outline-none focus:ring-2 focus:ring-cyan-400 transition" rows={4} placeholder="Papildu informācija vai jautājums"/>
+            <textarea className="mt-4 rounded-xl border border-slate-200 p-4 w-full focus:outline-none focus:ring-2 focus:ring-cyan-400 transition" rows={4} placeholder="Papildu informācija vai jautājums" />
             <button type="submit" className="mt-5 w-full bg-cyan-600 hover:bg-cyan-700 text-white font-bold py-4 rounded-xl transition-all shadow-lg text-lg">
               Nosūtīt pieprasījumu →
             </button>
@@ -305,7 +329,7 @@ export default function Home() {
           <div className="flex gap-6 text-sm">
             <a href="#" className="hover:text-white transition-colors">Privātuma politika</a>
             <a href="#" className="hover:text-white transition-colors">GDPR</a>
-            <a href="https://www.facebook.com/identalriga" className="hover:text-white transition-colors">Facebook</a>
+            <a href="#" className="hover:text-white transition-colors">Facebook</a>
             <a href="#" className="hover:text-white transition-colors">Instagram</a>
           </div>
         </div>
